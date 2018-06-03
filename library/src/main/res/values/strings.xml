@@ -1,0 +1,4 @@
+<resources>
+  <string name="app_name">library</string>
+  <string name="permissions_loader_meta_key">permissionsLoader</string>
+</resources>

@@ -1,6 +1,23 @@
 # AutoPermissions
 
+[![Release](https://jitpack.io/v/pedroSG94/AutoPermissions.svg)](https://jitpack.io/#pedroSG94/AutoPermissions)
+
 Android library to get permissions with a simple line of code
+
+## Compile
+
+To use this library in your project with gradle add this to your build.gradle:
+
+```gradle
+allprojects {
+  repositories {
+    maven { url 'https://jitpack.io' }
+  }
+}
+dependencies {
+  compile 'com.github.pedroSG94.AutoPermissions:library:1.0.1'
+}
+```
 
 ## Use example
 

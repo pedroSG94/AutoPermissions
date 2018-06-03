@@ -15,7 +15,7 @@ allprojects {
   }
 }
 dependencies {
-  compile 'com.github.pedroSG94.AutoPermissions:library:1.0.1'
+  compile 'com.github.pedroSG94:AutoPermissions:1.0.1'
 }
 ```
 

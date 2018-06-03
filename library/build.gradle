@@ -1,12 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.pedroSG94'
 
 android {
   compileSdkVersion 27
 
   defaultConfig {
-    minSdkVersion 16
+    minSdkVersion 15
     targetSdkVersion 27
     versionCode 100
     versionName "1.0.0"

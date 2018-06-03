@@ -4,7 +4,6 @@
     >
 
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.RECORD_AUDIO"/>
   <uses-permission android:name="android.permission.CAMERA"/>
 
@@ -16,16 +15,19 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       >
-    <activity
-        android:name=".MainActivity"
-        >
-      <meta-data android:name="@string/permissions_loader_meta_key"
-          android:value="android.permission.WRITE_EXTERNAL_STORAGE, android.permission.RECORD_AUDIO"/>
+    <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
-
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+    </activity>
+    <activity android:name=".ActivityExampleActivity">
+      <meta-data
+          android:name="@string/permissions_loader_meta_key"
+          android:value="android.permission.RECORD_AUDIO, android.permission.CAMERA"
+          />
+    </activity>
+    <activity android:name=".AllExampleActivity">
     </activity>
   </application>
 

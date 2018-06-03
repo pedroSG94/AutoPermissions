@@ -1,20 +1,20 @@
 package com.pedro.autopermissions
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.pedro.library.AutoPermissions
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-//        AutoPermissions.loadAllPermissions(this, 1)
-        AutoPermissions.loadActivityPermissions(this, 1)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    b_all.setOnClickListener {
+      startActivity(Intent(this, AllExampleActivity::class.java))
     }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        //Info about permissions grant and all permissions request
+    b_activity.setOnClickListener {
+      startActivity(Intent(this, ActivityExampleActivity::class.java))
     }
+  }
 }

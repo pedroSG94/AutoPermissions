@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.pedro.library.AutoPermissions
+import com.pedro.library.AutoPermissionsListener
 
-class ActivityExampleActivity : AppCompatActivity() {
+class ActivityExampleActivity : AppCompatActivity(), AutoPermissionsListener {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -13,9 +14,16 @@ class ActivityExampleActivity : AppCompatActivity() {
     AutoPermissions.loadActivityPermissions(this, 1)
   }
 
-  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+  override fun onGranted(requestCode: Int, permissions: Array<String>) {
+    Toast.makeText(this, "${permissions.size} permissions granted", Toast.LENGTH_SHORT).show()
+  }
+
+  override fun onDenied(requestCode: Int, permissions: Array<String>) {
+    Toast.makeText(this, "${permissions.size} permissions no granted", Toast.LENGTH_SHORT).show()
+  }
+
+  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    //Info about permissions grant and all permissions request
-    Toast.makeText(this, "${AutoPermissions.getActivityPermissionsNoGranted(this).size} permissions no granted", Toast.LENGTH_SHORT).show()
+    AutoPermissions.parsePermissions(this, requestCode, permissions, this)
   }
 }

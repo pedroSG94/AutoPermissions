@@ -15,7 +15,7 @@ allprojects {
   }
 }
 dependencies {
-  compile 'com.github.pedroSG94:AutoPermissions:1.0.2'
+  compile 'com.github.pedroSG94:AutoPermissions:1.0.3'
 }
 ```
 
@@ -58,4 +58,24 @@ AutoPermissions.Companion.loadActivityPermissions(activity, 1);
 Kotlin:
 ```kotlin
 AutoPermissions.loadActivityPermissions(activity, 1)
+```
+
+## Know permissions granted and permissions denied
+
+Java:
+```java
+@Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+      @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    AutoPermissions.Companion.parsePermissions(activity, requestCode, permissions, listener);
+  }
+```
+
+Kotlin:
+```kotlin
+override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    AutoPermissions.parsePermissions(activity, requestCode, permissions, listener)
+}
 ```

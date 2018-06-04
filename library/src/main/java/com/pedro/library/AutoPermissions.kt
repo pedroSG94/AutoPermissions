@@ -3,7 +3,6 @@ package com.pedro.library
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
 import android.support.v4.app.ActivityCompat
 
 
@@ -24,27 +23,56 @@ class AutoPermissions {
       return permissions.toTypedArray()
     }
 
-    fun hasPermissions(context: Context, permissions: Array<String>): Boolean {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        for (permission in permissions) {
-          if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-            return false
-          }
+    fun getAllPermissionsNoGranted(activity: Activity): Array<String> {
+      val list = ArrayList<String>()
+      for (p in getAllPermissions(activity)) {
+        if (ActivityCompat.checkSelfPermission(activity, p) != PackageManager.PERMISSION_GRANTED) {
+          list.add(p)
         }
       }
-      return true
+      return list.toTypedArray()
+    }
+
+    fun getAllPermissionsGranted(activity: Activity): Array<String> {
+      val list = ArrayList<String>()
+      for (p in getAllPermissions(activity)) {
+        if (ActivityCompat.checkSelfPermission(activity, p) == PackageManager.PERMISSION_GRANTED) {
+          list.add(p)
+        }
+      }
+      return list.toTypedArray()
+    }
+
+    fun getActivityPermissionsNoGranted(activity: Activity): Array<String> {
+      val list = ArrayList<String>()
+      for (p in getActivityPermissions(activity)) {
+        if (ActivityCompat.checkSelfPermission(activity, p) != PackageManager.PERMISSION_GRANTED) {
+          list.add(p)
+        }
+      }
+      return list.toTypedArray()
+    }
+
+    fun getActivityPermissionsGranted(activity: Activity): Array<String> {
+      val list = ArrayList<String>()
+      for (p in getActivityPermissions(activity)) {
+        if (ActivityCompat.checkSelfPermission(activity, p) == PackageManager.PERMISSION_GRANTED) {
+          list.add(p)
+        }
+      }
+      return list.toTypedArray()
     }
 
     fun loadAllPermissions(activity: Activity, requestCode: Int) {
-      if (!hasPermissions(activity, getAllPermissions(activity))) {
-        ActivityCompat.requestPermissions(activity, getAllPermissions(activity), requestCode)
-      }
+      ActivityCompat.requestPermissions(activity, getAllPermissions(activity), requestCode)
     }
 
     fun loadActivityPermissions(activity: Activity, requestCode: Int) {
-      if (!hasPermissions(activity, getActivityPermissions(activity))) {
-        ActivityCompat.requestPermissions(activity, getActivityPermissions(activity), requestCode)
-      }
+      ActivityCompat.requestPermissions(activity, getActivityPermissions(activity), requestCode)
+    }
+
+    fun loadSelectedPermissions(activity: Activity, requestCode: Int, permissions: Array<String>) {
+      ActivityCompat.requestPermissions(activity, permissions, requestCode)
     }
   }
 }

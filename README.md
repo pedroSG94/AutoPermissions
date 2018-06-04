@@ -60,7 +60,7 @@ Kotlin:
 AutoPermissions.loadActivityPermissions(activity, 1)
 ```
 
-## Know permissions granted and permissions denied
+### Know permissions granted and permissions denied
 
 Java:
 ```java

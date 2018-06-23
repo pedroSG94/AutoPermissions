@@ -1,5 +1,7 @@
 # AutoPermissions
 
+![](https://github.com/pedroSG94/AutoPermissions/blob/master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
+
 [![Release](https://jitpack.io/v/pedroSG94/AutoPermissions.svg)](https://jitpack.io/#pedroSG94/AutoPermissions)
 
 Android library to get permissions with a simple line of code
